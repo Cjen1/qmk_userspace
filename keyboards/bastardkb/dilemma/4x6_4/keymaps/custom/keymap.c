@@ -39,7 +39,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
 
 #    ifndef DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
-#        define DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 8
+#        define DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 1
 #    endif // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
@@ -116,24 +116,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 #ifdef POINTING_DEVICE_ENABLE
-#    ifdef DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
-    if (abs(mouse_report.x) > DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
-        if (auto_pointer_layer_timer == 0) {
-            layer_on(LAYER_POINTER);
-        }
-        auto_pointer_layer_timer = timer_read();
-    }
-    return mouse_report;
+//#    ifdef DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+//report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+//    if (abs(mouse_report.x) > DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > DILEMMA_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
+//        if (auto_pointer_layer_timer == 0) {
+//            layer_on(LAYER_POINTER);
+//        }
+//        auto_pointer_layer_timer = timer_read();
+//    }
+//    return mouse_report;
+//}
+//
+//void matrix_scan_user(void) {
+//    if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= DILEMMA_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
+//        auto_pointer_layer_timer = 0;
+//        layer_off(LAYER_POINTER);
+//    }
+//}
+//#    endif // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+void pointing_device_init_user(void) {
+    set_auto_mouse_layer(LAYER_POINTER);
+    set_auto_mouse_enable(true);
 }
 
-void matrix_scan_user(void) {
-    if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= DILEMMA_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
-        auto_pointer_layer_timer = 0;
-        layer_off(LAYER_POINTER);
-    }
-}
-#    endif // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 #    ifdef DILEMMA_AUTO_SNIPING_ON_LAYER
 layer_state_t layer_state_set_user(layer_state_t state) {
     dilemma_set_pointer_sniping_enabled(layer_state_cmp(state, DILEMMA_AUTO_SNIPING_ON_LAYER));
