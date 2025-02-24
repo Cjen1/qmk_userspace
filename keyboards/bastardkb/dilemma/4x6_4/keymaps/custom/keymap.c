@@ -29,8 +29,6 @@ enum dilemma_keymap_layers {
 
 #define LOWER MO(LAYER_LOWER)
 #define RAISE MO(LAYER_RAISE)
-#define PT_Z LT(LAYER_POINTER, KC_Z)
-#define PT_SLSH LT(LAYER_POINTER, KC_SLSH)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
@@ -61,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        RGB_MOD, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, KC_MNXT,    KC_VOLU, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       RGB_TOG, KC_LGUI, KC_LEFT, KC_DOWN, KC_RIGHT,KC_MPLY,    KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX,KC_PGDOWN,XXXXXXX,
+       RGB_TOG, KC_LGUI, KC_LEFT, KC_DOWN, KC_RIGHT,KC_MPLY,    KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
       RGB_RMOD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV,    KC_VOLD, KC_SLSH, KC_BSLS, KC_QUES, KC_PIPE, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
