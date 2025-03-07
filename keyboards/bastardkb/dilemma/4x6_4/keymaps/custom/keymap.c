@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        RGB_MOD, XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, KC_MNXT,    KC_VOLU, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-    RGB_TOG,OSM(KC_LGUI),KC_LEFT, KC_DOWN, KC_RIGHT,KC_MPLY,    KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, XXXXXXX,
+       RGB_TOG, KC_LGUI, KC_LEFT, KC_DOWN, KC_RIGHT,KC_MPLY,    KC_MUTE, XXXXXXX, XXXXXXX,    KC_L, KC_PGDN, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
      RGB_RMOD,KC_LBRC,KC_RBRC,S(KC_LBRC),S(KC_RBRC),KC_MPRV,    KC_VOLD, KC_SLSH, KC_BSLS, KC_QUES, KC_PIPE, XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
